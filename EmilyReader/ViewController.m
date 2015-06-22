@@ -6,9 +6,13 @@
 //  Copyright (c) 2015 Code Joy Inc. All rights reserved.
 //
 
+@import LinkReaderKit;
+
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <EasyReadingDelegate>
+
+@property (nonatomic, strong) EasyReadingViewController *reader;
 
 @end
 
@@ -16,12 +20,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)showReaderTapped:(id)sender {
+    self.reader = [[EasyReadingViewController alloc] initWithClientID:@"sxpjwjjoi3u0sfljtcusez8knpo2q22q" secret:@"dO29dedfySjzFOQ2z2WLYExEh6hIiCF8" delegate:self success:^{
+        self.reader.view.frame = self.view.bounds;
+        [self presentViewController:self.reader animated:YES completion:nil];
+    } failure:^(NSError *error) {
+        NSLog(@"READER ERROR:  %@", error);
+    }];
+}
+
+#pragma mark - EasyReadingDelegate
+
+-(void)readerError:(NSError *)error
+{
+    NSLog(@"READER ERROR:  %@", error);
 }
 
 @end

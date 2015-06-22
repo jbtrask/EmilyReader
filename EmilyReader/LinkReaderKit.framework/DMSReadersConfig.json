@@ -1,0 +1,75 @@
+{
+    "DMSReadersConfig_V2": {
+        "ImageReaders": [
+             {
+                "name": "ImageWatermark",
+                "library": "libDMSImageWatermark.a",
+                "options": {
+                 },
+                 "masterEnable": 1,
+                 "profiles": {
+                     "high": {
+                         "interval": 1,
+                         "offset": 0
+                     },
+                     "medium": {
+                         "interval": 1,
+                         "offset": 0
+                     },
+                     "low": {
+                         "interval": 1,
+                         "offset": 0
+                     }
+                 }
+             },
+             {
+                 "name": "ImageBarcode",
+                 "library": "libDMSImageBarcode.a",
+                 "options": {
+                     "read1DBarcodes": 1,
+                     "readQRcodes": 1
+                 },
+                 "masterEnable": 0,
+                 "profiles": {
+                     "high": {
+                         "interval": 1,
+                         "offset": 1
+                     },
+                     "medium": {
+                         "interval": 2,
+                         "offset": 1
+                     },
+                     "low": {
+                         "interval": 6,
+                         "offset": 1
+                     }
+                 }
+             }
+         ],
+        "AudioReaders": [
+             {
+                 "name": "AudioWatermark",
+                 "library": "libDMSAudioWatermark.a",
+                 "options": {
+                     "decoderFactoryName": "AFRE",
+                     "bufferSeconds": 6
+                 },
+                 "masterEnable": 0,
+                 "profiles": {
+                     "high": {
+                         "interval": 4,
+                         "offset": 0
+                     },
+                     "medium": {
+                         "interval": 8,
+                         "offset": 0
+                     },
+                     "low": {
+                         "interval": 16,
+                         "offset": 0
+                     }
+                 }
+             }
+         ]
+    }
+}
