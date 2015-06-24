@@ -24,8 +24,7 @@ NSString * const kClientID = @"sxpjwjjoi3u0sfljtcusez8knpo2q22q";
 NSString * const kClientSecret = @"dO29dedfySjzFOQ2z2WLYExEh6hIiCF8";
 
 CGFloat kTitleFadeOutDuration = 0.4;
-CGFloat kHeartMarginX = 10.0;
-CGFloat kHeartMarginY = 100.0;
+CGFloat kHeartWidth = 320.0;
 CGFloat kHeartInitialScale = 0.1;
 CGFloat kHeartFinalAlpha = 0.4;
 CGFloat kHeartFadeInDuration = 1.0;
@@ -73,6 +72,7 @@ CGFloat kHeartFadeInDuration = 1.0;
     }];
 }
 
+// Constraints adapted from https://github.com/evgenyneu/center-vfl
 - (void)addHeart
 {
     self.heartView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -84,14 +84,14 @@ CGFloat kHeartFadeInDuration = 1.0;
     [self.heartView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.reader.view addSubview:self.heartView];
     
-    NSDictionary *views = @{ @"heartView":self.heartView };
+    NSDictionary *views = @{ @"superview":self.reader.view, @"heartView":self.heartView };
     NSDictionary *values = @{
-                             @"x":[NSNumber numberWithFloat:kHeartMarginX],
-                             @"y":[NSNumber numberWithFloat:kHeartMarginY]
+                             @"width":[NSNumber numberWithFloat:kHeartWidth]
                              };
     
-    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-x-[heartView]-x-|" options:0 metrics:values views:views];
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-y-[heartView]-y-|" options:0 metrics:values views:views];
+    
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[superview]-(<=1)-[heartView(width)]" options:NSLayoutFormatAlignAllCenterX metrics:values views:views];
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[superview]-(<=1)-[heartView(width)]" options:NSLayoutFormatAlignAllCenterY metrics:values views:views];
     NSMutableArray *constraints = [NSMutableArray arrayWithArray:horizontalConstraints];
     [constraints addObjectsFromArray:verticalConstraints];
     
