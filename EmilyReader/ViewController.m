@@ -20,6 +20,16 @@
 
 @implementation ViewController
 
+NSString * const kClientID = @"sxpjwjjoi3u0sfljtcusez8knpo2q22q";
+NSString * const kClientSecret = @"dO29dedfySjzFOQ2z2WLYExEh6hIiCF8";
+
+CGFloat kTitleFadeOutDuration = 0.4;
+CGFloat kHeartMarginX = 10.0;
+CGFloat kHeartMarginY = 100.0;
+CGFloat kHeartInitialScale = 0.1;
+CGFloat kHeartFinalAlpha = 0.4;
+CGFloat kHeartFadeInDuration = 1.0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -35,8 +45,8 @@
 }
 
 - (void)initReader {
-    self.reader = [[EasyReadingViewController alloc] initWithClientID:@"sxpjwjjoi3u0sfljtcusez8knpo2q22q" secret:@"dO29dedfySjzFOQ2z2WLYExEh6hIiCF8" delegate:self success:^{
-        [UIView animateWithDuration:0.4 animations:^{
+    self.reader = [[EasyReadingViewController alloc] initWithClientID:kClientID secret:kClientSecret delegate:self success:^{
+        [UIView animateWithDuration:kTitleFadeOutDuration animations:^{
             self.titleLabel.alpha = 0.0;
         } completion:^(BOOL finished) {
             [self showReader];
@@ -55,18 +65,37 @@
     
     self.reader.view.frame = self.view.bounds;
     [self presentViewController:self.reader animated:YES completion:^{
-        CGRect heartRect = CGRectInset(self.view.bounds, 10, 80);
-        self.heartView = [[UIImageView alloc] initWithFrame:heartRect];
-        self.heartView.contentMode = UIViewContentModeScaleToFill;
-        self.heartView.image = [UIImage imageNamed:@"heart1"];
-        self.heartView.alpha = 0.0;
-        self.heartView.transform = CGAffineTransformMakeScale(0.1, 0.1);
-        [self.reader.view addSubview:self.heartView];
-        [UIView animateWithDuration:1.0 animations:^{
-            self.heartView.alpha = 0.4;
+        [self addHeart];
+        [UIView animateWithDuration:kHeartFadeInDuration animations:^{
+            self.heartView.alpha = kHeartFinalAlpha;
             self.heartView.transform = CGAffineTransformIdentity;
         }];
     }];
+}
+
+- (void)addHeart
+{
+    self.heartView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.heartView.contentMode = UIViewContentModeScaleToFill;
+    self.heartView.image = [UIImage imageNamed:@"heart1"];
+    self.heartView.alpha = 0.0;
+    self.heartView.transform = CGAffineTransformMakeScale(kHeartInitialScale, kHeartInitialScale);
+    self.heartView.autoresizingMask = UIViewAutoresizingNone;
+    [self.heartView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.reader.view addSubview:self.heartView];
+    
+    NSDictionary *views = @{ @"heartView":self.heartView };
+    NSDictionary *values = @{
+                             @"x":[NSNumber numberWithFloat:kHeartMarginX],
+                             @"y":[NSNumber numberWithFloat:kHeartMarginY]
+                             };
+    
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-x-[heartView]-x-|" options:0 metrics:values views:views];
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-y-[heartView]-y-|" options:0 metrics:values views:views];
+    NSMutableArray *constraints = [NSMutableArray arrayWithArray:horizontalConstraints];
+    [constraints addObjectsFromArray:verticalConstraints];
+    
+    [NSLayoutConstraint activateConstraints:constraints];
 }
 
 #pragma mark - EasyReadingDelegate
