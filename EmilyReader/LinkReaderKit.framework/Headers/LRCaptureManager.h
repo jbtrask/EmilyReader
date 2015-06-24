@@ -139,6 +139,7 @@
  */
 - (void)stopScanning;
 
+@property (nonatomic, readonly) AVCaptureDevice *device;
 
 @end
 

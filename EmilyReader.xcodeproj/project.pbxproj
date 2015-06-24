@@ -14,8 +14,8 @@
 		654746FB1B38C45300F6EBE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 654746FA1B38C45300F6EBE1 /* Images.xcassets */; };
 		654746FE1B38C45300F6EBE1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654746FC1B38C45300F6EBE1 /* LaunchScreen.xib */; };
 		6547470A1B38C45300F6EBE1 /* EmilyReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 654747091B38C45300F6EBE1 /* EmilyReaderTests.m */; };
-		654747141B38C4CF00F6EBE1 /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654747131B38C4CF00F6EBE1 /* LinkReaderKit.framework */; };
-		654747161B38C4E700F6EBE1 /* LinkReaderKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 654747131B38C4CF00F6EBE1 /* LinkReaderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6550CF241B3A346900F8CA6E /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6550CF231B3A346900F8CA6E /* LinkReaderKit.framework */; };
+		6550CF251B3A347000F8CA6E /* LinkReaderKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6550CF231B3A346900F8CA6E /* LinkReaderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +35,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				654747161B38C4E700F6EBE1 /* LinkReaderKit.framework in CopyFiles */,
+				6550CF251B3A347000F8CA6E /* LinkReaderKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +55,7 @@
 		654747031B38C45300F6EBE1 /* EmilyReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmilyReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		654747081B38C45300F6EBE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		654747091B38C45300F6EBE1 /* EmilyReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmilyReaderTests.m; sourceTree = "<group>"; };
-		654747131B38C4CF00F6EBE1 /* LinkReaderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkReaderKit.framework; sourceTree = "<group>"; };
+		6550CF231B3A346900F8CA6E /* LinkReaderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkReaderKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				654747141B38C4CF00F6EBE1 /* LinkReaderKit.framework in Frameworks */,
+				6550CF241B3A346900F8CA6E /* LinkReaderKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 				654746F71B38C45300F6EBE1 /* Main.storyboard */,
 				654746FA1B38C45300F6EBE1 /* Images.xcassets */,
 				654746FC1B38C45300F6EBE1 /* LaunchScreen.xib */,
-				654747131B38C4CF00F6EBE1 /* LinkReaderKit.framework */,
+				6550CF231B3A346900F8CA6E /* LinkReaderKit.framework */,
 				654746ED1B38C45300F6EBE1 /* Supporting Files */,
 			);
 			path = EmilyReader;
@@ -448,6 +448,7 @@
 				6547470F1B38C45300F6EBE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		654747101B38C45300F6EBE1 /* Build configuration list for PBXNativeTarget "EmilyReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +457,7 @@
 				654747121B38C45300F6EBE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

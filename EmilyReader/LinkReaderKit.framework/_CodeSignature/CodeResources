@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		nQOd011HusiUn/3Ok3gIxVUwQWc=
+		XX6ESMFOywh2anqLgfojTbu+SW4=
 		</data>
 		<key>DMSReadersConfig.json</key>
 		<data>
@@ -14,23 +14,27 @@
 		</data>
 		<key>EasyReadingViewController.nib</key>
 		<data>
-		4msIOU3vOFp7ZWeVkNSVjJyQfus=
+		lB6dvvQ1YlWmD/6CuXsnP8ze2tU=
+		</data>
+		<key>HPCropMarkView.nib</key>
+		<data>
+		sMuQglhnf2b4V4MsJiWTDsoSq0U=
 		</data>
 		<key>HPFlexibleLayoutViewController.nib</key>
 		<data>
-		m6djYBlmNzN5nlYjv2HmP9D2+t4=
+		V63wFBDBA8b4LK1DziRCv7zHw9o=
 		</data>
 		<key>HPResolvingOverlay.nib</key>
 		<data>
-		Ch5O6GBb6WK8nuH5R5DwNkoooiE=
+		FVFZ6coTCSIzAmHBGThpirDla+o=
 		</data>
 		<key>HPWebPayoffViewController.nib</key>
 		<data>
-		+Hw5Jj5IiZEXVfEiAFxjQ57FXqE=
+		F/0TCKtsP3ZS0gGxo/EsfyCnn64=
 		</data>
 		<key>HPWebPreviewController.nib</key>
 		<data>
-		cazAo1F6+iB4/AFqyGryxMUpEmw=
+		j0wKWOndD/QWN22lyeBDklqNahA=
 		</data>
 		<key>Headers/EasyReadingViewController.h</key>
 		<data>
@@ -46,7 +50,7 @@
 		</data>
 		<key>Headers/LRCaptureManager.h</key>
 		<data>
-		tRRJmbTFpvPUjjOx5tBwmu9Kc9I=
+		G7XDokKE+ukgqcyicCSS7+yFJ9U=
 		</data>
 		<key>Headers/LRContactPayoff.h</key>
 		<data>
@@ -106,7 +110,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		fjPpHv5IjOLns8fQG1M5/1OxXLs=
+		QfSZNk297CurMgHQmsDaJnVGkKQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -211,7 +215,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		nQOd011HusiUn/3Ok3gIxVUwQWc=
+		XX6ESMFOywh2anqLgfojTbu+SW4=
 		</data>
 		<key>DMSReadersConfig.json</key>
 		<data>
@@ -219,23 +223,27 @@
 		</data>
 		<key>EasyReadingViewController.nib</key>
 		<data>
-		4msIOU3vOFp7ZWeVkNSVjJyQfus=
+		lB6dvvQ1YlWmD/6CuXsnP8ze2tU=
+		</data>
+		<key>HPCropMarkView.nib</key>
+		<data>
+		sMuQglhnf2b4V4MsJiWTDsoSq0U=
 		</data>
 		<key>HPFlexibleLayoutViewController.nib</key>
 		<data>
-		m6djYBlmNzN5nlYjv2HmP9D2+t4=
+		V63wFBDBA8b4LK1DziRCv7zHw9o=
 		</data>
 		<key>HPResolvingOverlay.nib</key>
 		<data>
-		Ch5O6GBb6WK8nuH5R5DwNkoooiE=
+		FVFZ6coTCSIzAmHBGThpirDla+o=
 		</data>
 		<key>HPWebPayoffViewController.nib</key>
 		<data>
-		+Hw5Jj5IiZEXVfEiAFxjQ57FXqE=
+		F/0TCKtsP3ZS0gGxo/EsfyCnn64=
 		</data>
 		<key>HPWebPreviewController.nib</key>
 		<data>
-		cazAo1F6+iB4/AFqyGryxMUpEmw=
+		j0wKWOndD/QWN22lyeBDklqNahA=
 		</data>
 		<key>Headers/EasyReadingViewController.h</key>
 		<data>
@@ -251,7 +259,7 @@
 		</data>
 		<key>Headers/LRCaptureManager.h</key>
 		<data>
-		tRRJmbTFpvPUjjOx5tBwmu9Kc9I=
+		G7XDokKE+ukgqcyicCSS7+yFJ9U=
 		</data>
 		<key>Headers/LRContactPayoff.h</key>
 		<data>
