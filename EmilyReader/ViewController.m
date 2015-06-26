@@ -47,33 +47,10 @@ CGFloat kTitleLabelDistance = 0;
 {
     [super viewDidAppear:animated];
     
-    [self.view layoutIfNeeded];
-    [UIView animateWithDuration:kTitleScaleDuration animations:^{
-        self.infinityLabel.alpha = 1.0;
-        self.loveLabel.alpha = 1.0;
-        self.infinityLabelXConstraint.constant = 0;
-        self.infinityLabelYConstraint.constant = 0;
-        self.loveLabelXConstraint.constant = 0;
-        self.loveLabelYConstraint.constant = 0;
-        [self.view layoutIfNeeded];
-    }];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kTitleScaleDuration + 0.5) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:kTitleScaleDuration * kTitleFadeInRatio animations:^{
-            CGAffineTransform transform = CGAffineTransformMakeScale(kTitleFinalScale, kTitleFinalScale);
-            transform = CGAffineTransformTranslate(transform, -50, 0);
-            self.view.transform = transform;
-            self.infinityLabel.alpha = 0;
-            self.loveLabel.alpha = 0;
-        } completion:^(BOOL finished) {
-            self.animationComplete = YES;
-            [self showReader];
-        }];
-    });
-    
     if (self.reader) {
         [self showReader];
     } else {
+        [self animateTitle];
         [self initReader];
     }
 }
@@ -109,6 +86,33 @@ CGFloat kTitleLabelDistance = 0;
             self.heartView.transform = CGAffineTransformIdentity;
         }];
     }];
+}
+
+- (void)animateTitle
+{
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:kTitleScaleDuration animations:^{
+        self.infinityLabel.alpha = 1.0;
+        self.loveLabel.alpha = 1.0;
+        self.infinityLabelXConstraint.constant = 0;
+        self.infinityLabelYConstraint.constant = 0;
+        self.loveLabelXConstraint.constant = 0;
+        self.loveLabelYConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kTitleScaleDuration + 0.5) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:kTitleScaleDuration * kTitleFadeInRatio animations:^{
+            CGAffineTransform transform = CGAffineTransformMakeScale(kTitleFinalScale, kTitleFinalScale);
+            transform = CGAffineTransformTranslate(transform, -50, 0);
+            self.view.transform = transform;
+            self.infinityLabel.alpha = 0;
+            self.loveLabel.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.animationComplete = YES;
+            [self showReader];
+        }];
+    });
 }
 
 // Constraints adapted from https://github.com/evgenyneu/center-vfl
