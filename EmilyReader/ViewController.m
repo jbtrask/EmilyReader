@@ -15,6 +15,8 @@
 @property (nonatomic, strong) EasyReadingViewController *reader;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) UIImageView *heartView;
+@property (assign, nonatomic) BOOL readerReady;
+@property (assign, nonatomic) BOOL animationComplete;
 
 @end
 
@@ -23,11 +25,13 @@
 NSString * const kClientID = @"sxpjwjjoi3u0sfljtcusez8knpo2q22q";
 NSString * const kClientSecret = @"dO29dedfySjzFOQ2z2WLYExEh6hIiCF8";
 
-CGFloat kTitleFadeOutDuration = 0.4;
 CGFloat kHeartWidth = 320.0;
 CGFloat kHeartInitialScale = 0.1;
 CGFloat kHeartFinalAlpha = 0.4;
 CGFloat kHeartFadeInDuration = 1.0;
+CGFloat kTitleFinalScale = 8.0;
+CGFloat kTitleScaleDuration = 2.0;
+CGFloat kTitleFadeInRatio = 0.33;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +40,22 @@ CGFloat kHeartFadeInDuration = 1.0;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:kTitleScaleDuration animations:^{
+        self.titleLabel.transform = CGAffineTransformMakeScale(kTitleFinalScale, kTitleFinalScale);
+    } completion:^(BOOL finished) {
+        self.animationComplete = YES;
+        [self showReader];
+    }];
+    
+    [UIView animateWithDuration:kTitleScaleDuration * kTitleFadeInRatio animations:^{
+        self.titleLabel.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:kTitleScaleDuration * (1 - kTitleFadeInRatio) animations:^{
+            self.titleLabel.alpha = 0;
+        }];
+    }];
+    
     if (self.reader) {
         [self showReader];
     } else {
@@ -45,11 +65,8 @@ CGFloat kHeartFadeInDuration = 1.0;
 
 - (void)initReader {
     self.reader = [[EasyReadingViewController alloc] initWithClientID:kClientID secret:kClientSecret delegate:self success:^{
-        [UIView animateWithDuration:kTitleFadeOutDuration animations:^{
-            self.titleLabel.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [self showReader];
-        }];
+        self.readerReady = YES;
+        [self showReader];
     } failure:^(NSError *error) {
         NSLog(@"READER ERROR:  %@", error);
     }];
@@ -57,6 +74,10 @@ CGFloat kHeartFadeInDuration = 1.0;
 
 - (void)showReader
 {
+    if (!self.readerReady || !self.animationComplete) {
+        return;
+    }
+    
     if (self.heartView) {
         [self.heartView removeFromSuperview];
         self.heartView = nil;
