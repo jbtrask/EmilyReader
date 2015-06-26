@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,8 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞ love" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="VoI-ht-LP0">
-                                <rect key="frame" x="247" y="279" width="108" height="43"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="∞" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="VoI-ht-LP0" userLabel="∞ Label">
+                                <rect key="frame" x="111" y="179" width="29" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="0HR-Qi-OnS" userLabel="Love Label">
+                                <rect key="frame" x="460" y="179" width="81" height="43"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -25,12 +32,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="VoI-ht-LP0" secondAttribute="centerX" id="ENb-uc-XQ1"/>
-                            <constraint firstAttribute="centerY" secondItem="VoI-ht-LP0" secondAttribute="centerY" id="b3Y-3A-6BB"/>
+                            <constraint firstAttribute="centerX" secondItem="VoI-ht-LP0" secondAttribute="trailing" constant="160" id="ENb-uc-XQ1"/>
+                            <constraint firstAttribute="centerY" secondItem="0HR-Qi-OnS" secondAttribute="centerY" constant="100" id="Lh5-FP-4HC"/>
+                            <constraint firstAttribute="centerY" secondItem="VoI-ht-LP0" secondAttribute="centerY" constant="100" id="b3Y-3A-6BB"/>
+                            <constraint firstAttribute="centerX" secondItem="0HR-Qi-OnS" secondAttribute="leading" constant="-160" id="qEO-L0-bTf"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="titleLabel" destination="VoI-ht-LP0" id="146-Jc-VL4"/>
+                        <outlet property="infinityLabel" destination="VoI-ht-LP0" id="KYC-hf-7eb"/>
+                        <outlet property="infinityLabelXConstraint" destination="ENb-uc-XQ1" id="Ary-rZ-nnc"/>
+                        <outlet property="infinityLabelYConstraint" destination="b3Y-3A-6BB" id="Nce-uo-XBX"/>
+                        <outlet property="loveLabel" destination="0HR-Qi-OnS" id="4OQ-pi-Q9w"/>
+                        <outlet property="loveLabelXConstraint" destination="qEO-L0-bTf" id="gvR-80-Mpu"/>
+                        <outlet property="loveLabelYConstraint" destination="Lh5-FP-4HC" id="Ojw-sA-899"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

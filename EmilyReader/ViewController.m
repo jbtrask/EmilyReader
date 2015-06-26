@@ -13,10 +13,15 @@
 @interface ViewController () <EasyReadingDelegate>
 
 @property (nonatomic, strong) EasyReadingViewController *reader;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infinityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *loveLabel;
 @property (strong, nonatomic) UIImageView *heartView;
 @property (assign, nonatomic) BOOL readerReady;
 @property (assign, nonatomic) BOOL animationComplete;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loveLabelYConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loveLabelXConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *infinityLabelXConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *infinityLabelYConstraint;
 
 @end
 
@@ -29,9 +34,10 @@ CGFloat kHeartWidth = 320.0;
 CGFloat kHeartInitialScale = 0.1;
 CGFloat kHeartFinalAlpha = 0.4;
 CGFloat kHeartFadeInDuration = 1.0;
-CGFloat kTitleFinalScale = 8.0;
+CGFloat kTitleFinalScale = 4.0;
 CGFloat kTitleScaleDuration = 2.0;
-CGFloat kTitleFadeInRatio = 0.33;
+CGFloat kTitleFadeInRatio = 0.5;
+CGFloat kTitleLabelDistance = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,20 +47,29 @@ CGFloat kTitleFadeInRatio = 0.33;
 {
     [super viewDidAppear:animated];
     
+    [self.view layoutIfNeeded];
     [UIView animateWithDuration:kTitleScaleDuration animations:^{
-        self.titleLabel.transform = CGAffineTransformMakeScale(kTitleFinalScale, kTitleFinalScale);
-    } completion:^(BOOL finished) {
-        self.animationComplete = YES;
-        [self showReader];
+        self.infinityLabel.alpha = 1.0;
+        self.loveLabel.alpha = 1.0;
+        self.infinityLabelXConstraint.constant = 0;
+        self.infinityLabelYConstraint.constant = 0;
+        self.loveLabelXConstraint.constant = 0;
+        self.loveLabelYConstraint.constant = 0;
+        [self.view layoutIfNeeded];
     }];
     
-    [UIView animateWithDuration:kTitleScaleDuration * kTitleFadeInRatio animations:^{
-        self.titleLabel.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:kTitleScaleDuration * (1 - kTitleFadeInRatio) animations:^{
-            self.titleLabel.alpha = 0;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kTitleScaleDuration + 0.5) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:kTitleScaleDuration * kTitleFadeInRatio animations:^{
+            CGAffineTransform transform = CGAffineTransformMakeScale(kTitleFinalScale, kTitleFinalScale);
+            transform = CGAffineTransformTranslate(transform, -50, 0);
+            self.view.transform = transform;
+            self.infinityLabel.alpha = 0;
+            self.loveLabel.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.animationComplete = YES;
+            [self showReader];
         }];
-    }];
+    });
     
     if (self.reader) {
         [self showReader];
