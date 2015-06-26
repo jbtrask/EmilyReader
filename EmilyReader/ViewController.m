@@ -31,8 +31,8 @@ NSString * const kClientID = @"sxpjwjjoi3u0sfljtcusez8knpo2q22q";
 NSString * const kClientSecret = @"dO29dedfySjzFOQ2z2WLYExEh6hIiCF8";
 
 CGFloat kHeartWidth = 320.0;
-CGFloat kHeartInitialScale = 0.1;
-CGFloat kHeartFinalAlpha = 0.4;
+CGFloat kHeartInitialScale = 0.05;
+CGFloat kHeartFinalAlpha = 1.0;
 CGFloat kHeartFadeInDuration = 1.0;
 CGFloat kTitleFinalScale = 4.0;
 CGFloat kTitleScaleDuration = 2.0;
@@ -93,6 +93,9 @@ CGFloat kTitleLabelDistance = 0;
         return;
     }
     
+    self.infinityLabel.hidden = YES;
+    self.loveLabel.hidden = YES;
+    
     if (self.heartView) {
         [self.heartView removeFromSuperview];
         self.heartView = nil;
@@ -113,7 +116,7 @@ CGFloat kTitleLabelDistance = 0;
 {
     self.heartView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.heartView.contentMode = UIViewContentModeScaleToFill;
-    self.heartView.image = [UIImage imageNamed:@"heart1"];
+    self.heartView.image = [UIImage imageNamed:@"heart"];
     self.heartView.alpha = 0.0;
     self.heartView.transform = CGAffineTransformMakeScale(kHeartInitialScale, kHeartInitialScale);
     self.heartView.autoresizingMask = UIViewAutoresizingNone;
